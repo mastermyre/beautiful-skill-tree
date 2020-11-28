@@ -1,8 +1,11 @@
+import { StringNullableChain } from 'lodash';
 import { Nullable, Dictionary } from './utils';
 
 export type Skill = MajorSkill | BaseSkill;
 
 export type TooltipDirection = 'right' | 'left' | 'top' | 'bottom';
+
+export type AlternateContent = SpecializedContent;
 
 export type NodeState = 'locked' | 'unlocked' | 'selected';
 
@@ -28,7 +31,8 @@ export interface SkillCount {
 }
 
 export interface Tooltip {
-  content: React.ReactNode;
+  content?: React.ReactNode;
+  alternate_content: AlternateContent;
   direction?: TooltipDirection;
 }
 
@@ -54,6 +58,13 @@ interface BaseSkill {
 
 interface MajorSkill extends BaseSkill {
   icon: string;
+}
+
+interface SpecializedContent {
+  description: string;
+  effect: string;
+  types: string[];
+  cost: number;
 }
 
 export type Direction = 'left' | 'right';

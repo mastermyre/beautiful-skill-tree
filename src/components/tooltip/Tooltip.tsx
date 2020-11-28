@@ -18,7 +18,7 @@ interface Props {
 
 function Tooltip(props: Props) {
   const { children, tooltip, title } = props;
-  const { direction = 'top', content } = tooltip;
+  const { direction = 'top', content, alternate_content } = tooltip;
   const { tooltipZIndex } = useContext<SkillTheme>(ThemeContext);
   const tooltipRef = useRef<Instance<TProps> | null>(null);
   const isMobile = useMobile();
@@ -39,6 +39,7 @@ function Tooltip(props: Props) {
       <TooltipContent
         handleClose={hideTooltip}
         content={content}
+        alternate_content={alternate_content}
         title={title}
       />
     );
